@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/pages/datatables.js',
                 'resources/js/pages/slick.js',
+                'resources/js/custom/home.js',
             ],
             refresh: true,
         }),
