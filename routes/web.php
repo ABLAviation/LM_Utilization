@@ -27,4 +27,7 @@ Route::prefix('api')->group(function () {
     Route::get('operators', [\App\Http\Controllers\DemoController::class, 'getOperators']);
     Route::get('msn', [\App\Http\Controllers\DemoController::class, 'getMsn']);
     Route::get('data', [\App\Http\Controllers\DemoController::class, 'getData']);
+    Route::get('users', [\App\Http\Controllers\DemoController::class, 'getUsers']);
+
+    Route::post('update', [\App\Http\Controllers\DemoController::class, 'update']);
 });

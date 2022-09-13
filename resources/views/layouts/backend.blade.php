@@ -10,6 +10,7 @@
   <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
   <meta name="author" content="pixelcave">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Icons -->
   <link rel="shortcut icon" href="{{ asset('media/favicons/favicon.png') }}">
@@ -19,7 +20,7 @@
   <!-- Modules -->
   @yield('css')
 
-  @vite(['resources/sass/main.scss', 'resources/js/oneui/app.js'])
+  @vite(['resources/sass/main.scss', 'resources/js/oneui/app.js', 'resources/js/app.js'])
 
   @yield('js')
 </head>
