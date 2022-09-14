@@ -114,11 +114,11 @@ class DemoController extends Controller
         $users = \DB::table('users')
             ->select(['ID_USER', 'USER_NAME', 'USER_EMAIL']);
 
-            $searchTerm = $request->get('search');
-            if ($searchTerm) {
-                $users = $users->where('USER_NAME', 'like', '%' . $searchTerm . '%');
-            }
-            $users = $users->paginate($this->PER_PAGE, null, null, $page);
+        $searchTerm = $request->get('search');
+        if ($searchTerm) {
+            $users = $users->where('USER_NAME', 'like', '%' . $searchTerm . '%');
+        }
+        $users = $users->paginate($this->PER_PAGE, null, null, $page);
         return ['users' => $users];
     }
 
