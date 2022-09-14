@@ -1,63 +1,30 @@
 
 $(() => {
-    // Fetch the OPERATORS LIST
+
     getOperators();
     getUsers();
     initEventsList();
     initEventBtns();
+    initPlugins();
 
 
+
+    // region Functions
     function initEventsList() {
         // Fetch the MSN LIST by OPERATOR
         $('.operators_list').on("change", function (e) {
             let operator_params = $(this).select2('data')[0];
+            $('.msn_list').attr('disabled', false);
             getMsn(operator_params);
         });
 
-        // Fetch data by OPERATOR & MSN
-        let detailsRow = $('.details-row');
-        $('.msn_list').on('change', function (e){
-            let params = $(this).select2('data')[0];
-            let spinner = `<div class="spinner-container d-flex justify-content-center">
-                    <div class="spinner-border text-info" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div></div>`;
-            detailsRow.html(spinner);
-
-            $.ajax({
-                url: '/api/data',
-                data: {msn_id: params.id},
-                success: function (response) {
-                    detailsRow.empty();
-                    if (response.data.length == 0) {
-                        detailsRow.append('<p>Choose an operator + msn to view the details</p>');
-                        return
-                    }
-                    let data = response.data[0]
-                    let html = '';
-                    let columns_names = JSON.parse($('#columns_names').val())
-                    for (const property in data) {
-                        if (true) {
-                            html += `<div class="col-md-6 col-12 mb-2">
-                                    <label for="${property}">${columns_names[property]}</label>
-                                    <input type="text" name="${property}"
-                                    class="form-control" id="${property}"
-                                    value="${data[property] ?? ''}" />
-                                </div>`
-                        }
-                    }
-                    detailsRow.append(html);
-                    $(".review-section").removeClass("disabled");
-                }
-            });
-        });
-
         $(document).on('select2:open', () => {
-            document.querySelector('.select2-search__field').focus();
+            $('.select2-search__field').focus();
         });
     }
 
     function getOperators() {
+        // Fetch the OPERATORS LIST
         $('.operators_list').select2({
             'allowClear': true,
             'placeholder': 'Operators',
@@ -143,7 +110,49 @@ $(() => {
 
     function initEventBtns() {
         $('.cancel').on('click', function (e) {
+            $('.operators_list').val(null).trigger('change');
+            $('.msn_list').val(null).trigger('change');
             $(".review-section").addClass("disabled");
+            let detailsRow = $('.details-row');
+            detailsRow.empty().append('<p>Choose an operator + msn to view the details</p>');
+            $('.msn_list').attr('disabled', true);
+        });
+        $('.search').on('click', function (e) {
+
+            // Fetch data by OPERATOR & MSN
+            let detailsRow = $('.details-row');
+            let params = $('.msn_list').select2('data')[0];
+            let spinner = `<div class="spinner-container d-flex justify-content-center">
+                            <div class="spinner-border text-info" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div></div>`;
+            detailsRow.html(spinner);
+            $.ajax({
+                url: '/api/data',
+                data: {msn_id: params.id},
+                success: function (response) {
+                    detailsRow.empty();
+                    if (response.data.length == 0) {
+                        detailsRow.append('<p>Choose an operator + msn to view the details</p>');
+                        return
+                    }
+                    let data = response.data[0]
+                    let html = '';
+                    let columns_names = JSON.parse($('#columns_names').val())
+                    for (const property in data) {
+                        if (true) {
+                            html += `<div class="col-md-6 col-12 mb-2">
+                                    <label for="${property}">${columns_names[property]}</label>
+                                    <input type="text" name="${property}"
+                                    class="form-control" id="${property}"
+                                    value="${data[property] ?? ''}" />
+                                </div>`
+                        }
+                    }
+                    detailsRow.append(html);
+                    $(".review-section").removeClass("disabled");
+                }
+            });
         });
         $('#form').on('submit', function (e) {
             e.preventDefault()
@@ -160,5 +169,10 @@ $(() => {
             });
         });
     }
-    One.helpersOnLoad('js-flatpickr');
+
+    function initPlugins() {
+        One.helpersOnLoad('js-flatpickr');
+    }
+    // endregion
+
 });

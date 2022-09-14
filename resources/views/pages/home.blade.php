@@ -37,19 +37,23 @@
                                                 <div class="filter form-section">
                                                     <h3>Filter</h3>
                                                     <div class="row">
-                                                        <div class="col-md-6 col-12 operators mb-2">
+                                                        <div class="col-md-6 col-12 operators mb-3">
                                                             <label for="operator" class="mb-1">Operators</label>
                                                             <select class="form-select operators_list"
                                                                     id="operator" name="operator" width="100%">
                                                                 <option value="">Operator</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-6 col-12 msn mb-2">
+                                                        <div class="col-md-6 col-12 msn mb-3">
                                                             <label for="msn" class="mb-1">MSN</label>
-                                                            <select class="form-select msn_list"
+                                                            <select class="form-select msn_list" disabled
                                                                     id="msn" name="msn" width="100%">
                                                                 <option value="">MSN</option>
                                                             </select>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button type="button" class="btn btn-alt-info search">Search</button>
+                                                            <button type="button" class="btn btn-alt-secondary cancel">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -86,11 +90,10 @@
                                                 </div>
                                                 <div class="details form-section">
                                                     <h3>Details</h3>
-                                                    <div class="details-row row"><p>Choose an operator + msn to view the details</p></div>
+                                                    <div class="details-row row"><p class="mb-0">Choose an operator + msn to view the details</p></div>
                                                 </div>
                                                 <div class="btn-actions mt-0">
                                                     <button type="submit" class="btn btn-alt-primary update">Submit</button>
-                                                    <button type="button" class="btn btn-alt-secondary cancel">Cancel</button>
                                                 </div>
                                             </form>
                                         </div>
