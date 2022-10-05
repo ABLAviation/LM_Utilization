@@ -45,7 +45,6 @@ class ConfirmPasswordController extends Controller
      */
     public function showConfirmForm()
     {
-        dd(1);
         return view('auth.passwords.confirm');
     }
 }

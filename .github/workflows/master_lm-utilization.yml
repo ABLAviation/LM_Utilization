@@ -22,6 +22,9 @@ jobs:
           node-version: '16'
           check-latest: true
 
+      - name: Clean Cache NPM
+        run: npm cache clean --force
+
       - name: Install NPM dependencies
         run: npm install
 
