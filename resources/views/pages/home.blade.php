@@ -52,8 +52,8 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-12">
-                                                            <button type="button" class="btn btn-alt-info search">Search</button>
-                                                            <button type="button" class="btn btn-alt-secondary cancel">Cancel</button>
+                                                            <button type="button" class="btn btn-alt-info btn-abl-primary search">Search</button>
+                                                            <button type="button" class="btn btn-alt-secondary btn-abl-secondary cancel">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,9 +82,9 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6 col-12 date-of-approval mb-2">
-                                                            <label class="form-label" for="example-flatpickr-default">Date of Approval</label>
+                                                            <label class="form-label" for="date-of-approval">Date of Approval</label>
                                                             <input type="text" class="js-flatpickr form-control flatpickr-input"
-                                                                   id="example-flatpickr-default" name="example-flatpickr-default" placeholder="Y-m-d" readonly="readonly">
+                                                                   id="date-of-approval" name="date-of-approval" placeholder="Y-m-d" readonly="readonly">
                                                         </div>
                                                     </div>
                                                 </div>

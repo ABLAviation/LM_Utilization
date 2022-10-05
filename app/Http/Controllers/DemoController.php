@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 class DemoController extends Controller
 {
 
+    // region LM
     private $PER_PAGE = 20;
 
     public function index(Request $request)
     {
-
+//        dd(\DB::connection()->getDatabaseName(), \DB::connection()->getPDO());
 //        $x = $request->all();
 //        $msn = [];
 //        if (count($x)) {
@@ -126,4 +127,7 @@ class DemoController extends Controller
     {
         dd($request->all());
     }
+
+    // endregion
+
 }
