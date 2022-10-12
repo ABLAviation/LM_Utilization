@@ -14,4 +14,6 @@ class User extends Authenticatable
 
     protected $primaryKey = 'ID_USER';
 
+    protected $hidden = ['USER_PASSWORD'];
+
 }
