@@ -5,8 +5,11 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                'resources/sass/main.scss',
                 'resources/sass/app.scss',
+                'resources/js/oneui/app.js',
                 'resources/js/app.js',
+                'resources/js/custom/home.js',
             ],
             refresh: true,
         }),
