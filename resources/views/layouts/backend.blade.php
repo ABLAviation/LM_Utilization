@@ -28,7 +28,7 @@
 <body>
   <div id="page-container" class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed main-content-narrow">
 
-    @include('layouts.partials.right-sidebar')
+    {{-- @include('layouts.partials.right-sidebar') --}}
 
     @include('layouts.partials.left-sidebar')
 
