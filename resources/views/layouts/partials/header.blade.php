@@ -26,7 +26,7 @@
             <!-- END Open Search Section -->
 
             <!-- Search Form (visible on larger screens) -->
-            <form class="d-none d-md-inline-block" action="/dashboard" method="POST">
+            {{-- <form class="d-none d-md-inline-block" action="/dashboard" method="POST">
                 @csrf
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
@@ -34,7 +34,7 @@
                 <i class="fa fa-fw fa-search"></i>
               </span>
                 </div>
-            </form>
+            </form> --}}
             <!-- END Search Form -->
         </div>
         <!-- END Left Section -->
@@ -53,30 +53,27 @@
                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
                        <p class="mt-2 mb-0 fw-medium">{{ auth()->user()->USER_NAME }}</p>
                    </div>
-                   <div class="p-2">
+                   {{-- <div class="p-2">
                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                            <span class="fs-sm fw-medium">Profile</span>
                            <span class="badge rounded-pill bg-primary ms-2">1</span>
                        </a>
-                   </div>
-                   <div role="separator" class="dropdown-divider m-0"></div>
+                   </div> --}}
+                   {{-- <div role="separator" class="dropdown-divider m-0"></div> --}}
                    <div class="p-2">
-                       <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                       {{-- <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                            <span class="fs-sm fw-medium">Lock Account</span>
-                       </a>
-                       <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                       </a> --}}
+                       <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
                            <span class="fs-sm fw-medium">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    Log Out
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                Log Out
                            </span>
                        </a>
+                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
@@ -84,9 +81,9 @@
 
             <!-- Toggle Side Overlay -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-sm btn-alt-secondary ms-2" data-toggle="layout" data-action="side_overlay_toggle">
+            {{-- <button type="button" class="btn btn-sm btn-alt-secondary ms-2" data-toggle="layout" data-action="side_overlay_toggle">
                 <i class="fa fa-fw fa-list-ul fa-flip-horizontal"></i>
-            </button>
+            </button> --}}
             <!-- END Toggle Side Overlay -->
         </div>
         <!-- END Right Section -->
