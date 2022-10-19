@@ -26,10 +26,14 @@ Route::post('register', [\App\Http\Controllers\Auth\RegisterController::class, '
 
 Route::view('/dx', 'dx');
 
+Route::view('/import', 'pages.import.index');
+Route::post('/import', [\App\Http\Controllers\ImportController::class, 'import']);
+
 Route::middleware('auth')->group(function () {
 
     Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-    Route::get('/', [\App\Http\Controllers\DemoController::class, 'index']);
+    Route::get('/', [\App\Http\Controllers\PageController::class, 'index']);
+    Route::get('/step/{step}', [\App\Http\Controllers\PageController::class, 'step']);
     //Route::match(['get', 'post'], '/dashboard', function(){
     //    return view('dashboard');
     //});
@@ -38,12 +42,12 @@ Route::middleware('auth')->group(function () {
     //Route::view('/pages/blank', 'pages.blank');
 
     Route::prefix('api')->group(function () {
-        Route::get('operators', [\App\Http\Controllers\DemoController::class, 'getOperators']);
-        Route::get('msn', [\App\Http\Controllers\DemoController::class, 'getMsn']);
-        Route::get('data', [\App\Http\Controllers\DemoController::class, 'getData']);
-        Route::get('users', [\App\Http\Controllers\DemoController::class, 'getUsers']);
+        Route::get('operators', [\App\Http\Controllers\Api\ApiController::class, 'getOperators']);
+        Route::get('msn', [\App\Http\Controllers\Api\ApiController::class, 'getMsn']);
+        Route::get('data/{step}', [\App\Http\Controllers\Api\ApiController::class, 'getData']);
+        Route::get('users', [\App\Http\Controllers\Api\ApiController::class, 'getUsers']);
 
-        Route::post('update', [\App\Http\Controllers\DemoController::class, 'update']);
+        Route::post('update', [\App\Http\Controllers\Api\ApiController::class, 'update']);
     });
 
 //\Auth::routes();

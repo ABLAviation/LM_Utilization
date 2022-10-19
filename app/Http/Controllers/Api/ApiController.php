@@ -1,38 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DemoController extends Controller
+class ApiController extends Controller
 {
 
-    // region LM
     private $PER_PAGE = 20;
-
-    public function index(Request $request)
-    {
-//        dd(\DB::connection()->getDatabaseName(), \DB::connection()->getPDO());
-//        $x = $request->all();
-//        $msn = [];
-//        if (count($x)) {
-//            $msn = \DB::table('ABL_DEALS as a')
-//                ->join('MSN_LIST as m', 'a.MSN_ID', '=', 'm.ID_MSN')
-//                ->where('LESSEE_OPERATOR_ID', $request->get('operator'))
-//                ->select('ID_MSN', 'MSN_Description')
-//                ->get();
-//
-//        }
-//
-        $column_names = config('properties.Column_Names');
-        $data = [
-            'column_names' => $column_names,
-//            'operators' => $this->getOperators($request),
-//            'msn' => $msn
-        ];
-
-        return view('pages.home', $data);
-    }
 
     public function getOperators(Request $request)
     {
@@ -40,6 +16,7 @@ class DemoController extends Controller
         $operators = \DB::table('OPERATORS_LIST')
             ->select('ID_OPERATOR', 'Operator_caption');
         $searchTerm = $request->get('search');
+        $searchTerm = 'Lumi'; // Test
         if ($searchTerm) {
             $operators = $operators->where('Operator_caption', 'like', '%' . $searchTerm . '%');
         }
@@ -64,9 +41,15 @@ class DemoController extends Controller
         return ['msn' => $msn];
     }
 
-    public function getData(Request $request)
+    public function getData(Request $request, $step)
+    {
+        return $this->$step($request);
+    }
+
+    public function step1(Request $request)
     {
         $msn_id = $request->get('msn_id');
+        $msn_id = 3;
         $data = \DB::table('ABL_DEALS as ad')
             ->join('MSN_LIST as ml', 'ml.ID_MSN', '=', 'ad.MSN_ID')
             ->join('OPERATORS_LIST as ol', 'ol.ID_OPERATOR', '=', 'ad.LESSEE_OPERATOR_ID')
@@ -74,7 +57,7 @@ class DemoController extends Controller
             ->join('APU as ap', 'ap.ID_APU', '=', 'ad.APU_ID')
             ->join('ENGINE_MODEL as em', 'em.ID_ENGINE_MODEL', '=', 'ad.ID_ENGINMODEL')
             ->join('ENGINE_SERIES as es', 'es.ID_ENGINE_SERIES', '=', 'em.ID_ENGINE_SERIES')
-            ->join('LM_UTILIZATION as lm', 'lm.ID_ABLDEALS', '=', 'ad.ID_ABL_DEALS')
+//            ->join('LM_UTILIZATION_New as lm', 'lm.ID_ABLDEALS', '=', 'ad.ID_ABL_DEALS')
             ->where('ml.ID_MSN', $msn_id)
             ->select([
                 'ad.AIRCRAFTREGISTRATION_NUMBER',
@@ -108,6 +91,51 @@ class DemoController extends Controller
             ->get();
         return ['data' => $data];
     }
+    
+    public function step2(Request $request)
+    {
+        $operator_id = $request->input('operator_id');
+        $msn_id = $request->get('msn_id');
+        $data = \DB::table('LM_UTILIZATION_New as lm')
+                ->join('ABL_DEALS as ad', 'ad.ID_ABL_DEALS', '=', 'lm.ID_ABLDEALS')
+                ->join('MSN_LIST as ml', 'ml.ID_MSN', '=', 'ad.MSN_ID')
+                ->join('OPERATORS_LIST as ol', 'ol.ID_OPERATOR', '=', 'ad.LESSEE_OPERATOR_ID')
+            ->select([
+                'Data_Source_Airframe',
+                'ID_ABLDEALS',
+                'Data_Source_Airframe',
+                'Engine_1_Location',
+                'Engine_2_Location',
+                'Engine_3_Location',
+                'Engine_4_Location',
+                'Utilization_Start_date_Airframe',
+                'Utilization_End_date_Airframe',
+                'Last_Utilization_date_Airframe',
+                'Monthly_Airframe_Utilization_FH',
+                'Monthly_Airframe_Utilization_FC',
+                'Airframe_TSN_at_Latest_Utilization_date',
+                'Airframe_CSN_at_Latest_Utilization_date',
+                'APU_Location',
+                'Data_Source_APU',
+                'Utilization_Start_date_APU',
+                'Utilization_End_date_APU',
+                'Last_Utilization_date_APU',
+                'Monthly_APU_Utilization_APU_H',
+                'Monthly_APU_Utilization_APU_C',
+                'APU_TSN_at_Latest_Utilization_date',
+                'APU_CSN_at_Latest_Utilization_date',
+                'lm.CreatedBy',
+                'lm.CreationDate',
+                'lm.ModifiedBy',
+                'lm.ModificationDate',
+            ])
+            ->where('ml.ID_MSN', $msn_id)
+            ->where('LESSEE_OPERATOR_ID', $operator_id)
+            ->distinct()
+            ->first();
+
+        return ['data' => $data];
+    }
 
     public function getUsers(Request $request)
     {
@@ -125,9 +153,19 @@ class DemoController extends Controller
 
     public function update(Request $request)
     {
+        $step = $request->get('step');
+        $actionName = "update_$step";
+        return $this->$actionName($request);
+    }
+
+    public function update_step1(Request $request)
+    {
         dd($request->all());
     }
 
-    // endregion
+    public function update_step2(Request $request)
+    {
+        dd($request->all());
+    }
 
 }

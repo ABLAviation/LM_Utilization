@@ -1,4 +1,4 @@
-import './bootstrap';
+// import './bootstrap';
 
 
 $(() => {
@@ -8,3 +8,5 @@ $(() => {
         }
     });
 });
+
+window.item = 4;
