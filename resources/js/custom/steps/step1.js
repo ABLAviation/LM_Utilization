@@ -53,9 +53,9 @@ $(() => {
             }
         });
     });
-    $('#form').on('submit', function (e) {
+    $('.update').on('click', function (e) {
         e.preventDefault()
-        const formData = new FormData(this);
+        const formData = new FormData($('#form')[0]);
         formData.append('step', '1')
         $.ajax({
             type: 'POST',

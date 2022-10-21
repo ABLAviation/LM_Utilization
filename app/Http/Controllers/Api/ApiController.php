@@ -16,7 +16,7 @@ class ApiController extends Controller
         $operators = \DB::table('OPERATORS_LIST')
             ->select('ID_OPERATOR', 'Operator_caption');
         $searchTerm = $request->get('search');
-        $searchTerm = 'Lumi'; // Test
+        $searchTerm = 'Lumi'; // Testing
         if ($searchTerm) {
             $operators = $operators->where('Operator_caption', 'like', '%' . $searchTerm . '%');
         }
@@ -50,7 +50,7 @@ class ApiController extends Controller
     public function step1(Request $request)
     {
         $msn_id = $request->get('msn_id');
-        $msn_id = 3;
+        $msn_id = 3; // Testing
         $data = \DB::table('ABL_DEALS as ad')
             ->join('MSN_LIST as ml', 'ml.ID_MSN', '=', 'ad.MSN_ID')
             ->join('OPERATORS_LIST as ol', 'ol.ID_OPERATOR', '=', 'ad.LESSEE_OPERATOR_ID')
@@ -154,8 +154,8 @@ class ApiController extends Controller
 
     public function update(Request $request)
     {
-        $step = $request->get('step');
-        $actionName = "update_$step";
+        $stepNumber = $request->get('step');
+        $actionName = "update_step$stepNumber";
         return $this->$actionName($request);
     }
 

@@ -39,6 +39,8 @@
         </div>
         <!-- END Left Section -->
 
+        <p class="mb-0">Development Mode</p>
+
         <!-- Right Section -->
         <div class="d-flex align-items-center">
             <!-- User Dropdown -->
