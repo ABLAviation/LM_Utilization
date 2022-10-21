@@ -11,6 +11,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/custom/steps/step1.js',
                 'resources/js/custom/steps/step2.js',
+                'resources/js/custom/steps/step3.js',
+                'resources/js/custom/steps/step4.js',
             ],
             refresh: true,
         }),

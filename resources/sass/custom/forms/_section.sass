@@ -1,5 +1,10 @@
 .form-section
-  box-shadow: 0 1px 2px rgb(214 219 226 / 50%), 0 1px 2px rgb(214 219 226 / 50%)
+  box-shadow: 0 1px 2px rgb($gray, 0.5), 0 1px 2px rgb($gray, 0.5)
   padding: 20px
   border-radius: 0.5rem
   margin-bottom: 1.5rem
+
+.form-control
+  &:focus
+    border-color: rgba($primary-abl, 0.25)
+    box-shadow: 0 0 0 0.25rem rgba($primary-abl, 0.25)

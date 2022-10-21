@@ -8,15 +8,7 @@
                     <div class="details-row row">
                     </div>
                 </div>
-                <div class="btn-actions mt-0">
-                    <a class="btn btn-alt-primary" href="/step/step1">Previous</a>
-                    <button type="submit" class="btn btn-abl-primary update">Submit</button>
-                    <a class="btn btn-alt-primary" href="/step/step3">Next</a>
-                </div>
             </form>
         </div>
-    </div>
-    <div class="hidden-params d-none">
-        <input type="hidden" id="columns_names" value="{{ json_encode($column_names) }}">
     </div>
 </div>

@@ -81,7 +81,6 @@ class LoginController extends Controller
             Auth::login($user);
             return redirect(RouteServiceProvider::HOME)->withSuccess('Signed in');
         }
-        dd(1);
         return redirect('/login')->withErrors(['email' => 'Login details are not valid']);
     }
 }

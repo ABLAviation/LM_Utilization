@@ -27,7 +27,7 @@ $(() => {
                             </div></div>`;
         detailsRow.html(spinner);
         $.ajax({
-            url: '/api/data/step1',
+            url: '/api/data/steps/1',
             data: {msn_id: params.id},
             success: function (response) {
                 detailsRow.empty();
@@ -56,7 +56,7 @@ $(() => {
     $('#form').on('submit', function (e) {
         e.preventDefault()
         const formData = new FormData(this);
-        formData.append('step', 'step1')
+        formData.append('step', '1')
         $.ajax({
             type: 'POST',
             url: '/api/update',
@@ -69,5 +69,4 @@ $(() => {
         });
     });
 
-    $('.search').trigger('click') // testing
 });

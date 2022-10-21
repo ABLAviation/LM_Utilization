@@ -104,5 +104,38 @@ function initPlugins() {
     One.helpersOnLoad('js-flatpickr');
 }
 
+function activateTooltip() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+}
 
-export {initEventsList, getOperators, getUsers, initPlugins}
+function loadData() {
+    let detailsRow = $('.details-row');
+    let spinner = `<div class="spinner-container d-flex justify-content-center">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div></div>`;
+    detailsRow.html(spinner);
+    setTimeout(function(){
+        let html = '';
+        let columns_names = JSON.parse($('#columns_names').val());
+        for (const property in columns_names) {
+            html += `<div class="col-lg-4 col-md-6 col-12 mb-3">
+                        <label for="${property}" 
+                        class="property-label text-ellipsis mb-1"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" 
+                        title="${columns_names[property]}"
+                        >${columns_names[property]}</label>
+                        <input type="text" name="${property}"
+                        class="form-control" id="${property}"/>
+                </div>`
+        }
+        detailsRow.empty();
+        detailsRow.append(html);
+        activateTooltip()
+    }, 500);
+}
+
+export {initEventsList, getOperators, getUsers, initPlugins, loadData}

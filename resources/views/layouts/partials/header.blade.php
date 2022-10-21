@@ -64,7 +64,7 @@
                        {{-- <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                            <span class="fs-sm fw-medium">Lock Account</span>
                        </a> --}}
-                       <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}
+                       <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                            <span class="fs-sm fw-medium">

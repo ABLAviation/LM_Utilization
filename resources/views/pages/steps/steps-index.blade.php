@@ -18,7 +18,7 @@
 {{--    <script src="{{ asset('js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>--}}
 {{--    <script src="{{ asset('js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>--}}
 
-    @vite(['resources/js/custom/steps/'.$step.'.js'])
+    @vite(['resources/js/custom/steps/step'.$stepNumber.'.js'])
 @endsection
 
 @section('content')
@@ -31,7 +31,19 @@
                         <div class="col-12">
                             <div class="block block-rounded">
                                 <div class="block-content block-content-full">
-                                    @include('pages.steps.' . $step)
+                                    @include('pages.steps.step' . $stepNumber)
+                                    <div class="btn-actions mt-0">
+                                        @if($stepNumber > 1)
+                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $stepNumber - 1 }}"><i class="fa-solid fa-chevron-left"></i></a>
+                                        @endif
+                                        <button type="submit" class="btn btn-abl-primary update">Submit</button>
+                                        @if($stepNumber < $stepsLimit)
+                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $stepNumber + 1 }}"><i class="fa-solid fa-chevron-right"></i></a>
+                                        @endif
+                                    </div>
+                                    <div class="hidden-params d-none">
+                                        <input type="hidden" id="columns_names" value="{{ json_encode($column_names) }}">
+                                    </div>
                                 </div>
                             </div>
                         </div>

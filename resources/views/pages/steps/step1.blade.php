@@ -61,14 +61,7 @@
                     <h3>Details</h3>
                     <div class="details-row row"><p class="mb-0">Choose an operator + msn to view the details</p></div>
                 </div>
-                <div class="btn-actions mt-0">
-                    <button type="submit" class="btn btn-abl-primary update">Submit</button>
-                    <a class="btn btn-alt-primary" href="/step/step2">Next</a>
-                </div>
             </form>
         </div>
-    </div>
-    <div class="hidden-params d-none">
-        <input type="hidden" id="columns_names" value="{{ json_encode($column_names) }}">
     </div>
 </div>

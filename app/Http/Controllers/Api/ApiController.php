@@ -41,9 +41,10 @@ class ApiController extends Controller
         return ['msn' => $msn];
     }
 
-    public function getData(Request $request, $step)
+    public function getData(Request $request, $stepNumber)
     {
-        return $this->$step($request);
+        $actionName = "step$stepNumber";
+        return $this->$actionName($request);
     }
 
     public function step1(Request $request)
@@ -160,12 +161,12 @@ class ApiController extends Controller
 
     public function update_step1(Request $request)
     {
-        dd($request->all());
+        return ["payload" => $request->all()];
     }
 
     public function update_step2(Request $request)
     {
-        dd($request->all());
+        return ["payload" => $request->all()];
     }
 
 }
