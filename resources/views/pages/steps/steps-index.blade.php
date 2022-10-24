@@ -53,4 +53,5 @@
         </div>
     </div>
     <!-- END Hero -->
+    <div id="alert-zone" class="right-bottom-corner"></div>
 @endsection

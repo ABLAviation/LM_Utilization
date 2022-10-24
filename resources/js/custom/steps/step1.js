@@ -1,4 +1,4 @@
-import {initEventsList, getOperators, getUsers, initPlugins} from '../functions';
+import {initEventsList, getOperators, getUsers, initPlugins, displayAlert} from '../functions';
 
 $(() => {
 
@@ -55,6 +55,7 @@ $(() => {
     });
     $('.update').on('click', function (e) {
         e.preventDefault()
+        return displayAlert();
         const formData = new FormData($('#form')[0]);
         formData.append('step', '1')
         $.ajax({
@@ -68,5 +69,4 @@ $(() => {
             }
         });
     });
-
 });

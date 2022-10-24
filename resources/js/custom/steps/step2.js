@@ -1,4 +1,4 @@
-import {loadData} from '../functions';
+import {loadData, displayAlert} from '../functions';
 
 $(() => {
 
@@ -9,8 +9,9 @@ $(() => {
 
     loadData()
 
-    $('#form').on('submit', function (e) {
+    $('.update').on('click', function (e) {
         e.preventDefault()
+        return displayAlert();
         const formData = new FormData(this);
         formData.append('step', 'step2')
         $.ajax({

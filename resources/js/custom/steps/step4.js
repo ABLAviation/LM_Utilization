@@ -1,6 +1,11 @@
-import {loadData} from "../functions";
+import {displayAlert, loadData} from "../functions";
 
 $(() => {
 
-    loadData()
+    loadData();
+
+    $('.update').on('click', function (e) {
+        e.preventDefault()
+        return displayAlert();
+    });
 })
