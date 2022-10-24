@@ -122,7 +122,7 @@ function loadData() {
                             <span class="visually-hidden">Loading...</span>
                         </div></div>`;
     detailsRow.html(spinner);
-    setTimeout(function(){
+    setTimeout(() => {
         let html = '';
         let columns_names = JSON.parse($('#columns_names').val());
         for (const property in columns_names) {
