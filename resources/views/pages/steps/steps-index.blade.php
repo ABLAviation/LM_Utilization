@@ -33,12 +33,14 @@
                                 <div class="block-content block-content-full">
                                     @include('pages.steps.step' . $stepNumber)
                                     <div class="btn-actions mt-0">
-                                        @if($stepNumber > 1)
-                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $stepNumber - 1 }}"><i class="fa-solid fa-chevron-left"></i></a>
+                                        @if($prevText)
+                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $prevText }}"><i class="fa-solid fa-chevron-left"></i> Previous</a>
                                         @endif
+                                        @if($stepNumber > 1)
                                         <button type="submit" class="btn btn-abl-primary update">Submit</button>
-                                        @if($stepNumber < $stepsLimit)
-                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $stepNumber + 1 }}"><i class="fa-solid fa-chevron-right"></i></a>
+                                        @endif
+                                        @if($nextText)
+                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $nextText }}">Next <i class="fa-solid fa-chevron-right"></i></a>
                                         @endif
                                     </div>
                                     <div class="hidden-params d-none">

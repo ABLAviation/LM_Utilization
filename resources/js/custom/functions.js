@@ -123,19 +123,37 @@ function loadData() {
                         </div></div>`;
     detailsRow.html(spinner);
     setTimeout(() => {
-        let html = '';
         let columns_names = JSON.parse($('#columns_names').val());
+        let html = '';
         for (const property in columns_names) {
-            html += `<div class="col-lg-4 col-md-6 col-12 mb-3">
-                        <label for="${property}" 
-                        class="property-label text-ellipsis mb-1"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom" 
-                        title="${columns_names[property]}"
-                        >${columns_names[property]}</label>
-                        <input type="text" name="${property}"
-                        class="form-control" id="${property}"/>
-                </div>`
+            let html_items = '';
+            for (const sub_property in columns_names[property]) {
+                html_items += `<div class="col-lg-4 col-md-6 col-12 mb-3">
+                                <label for="${sub_property}" 
+                                class="property-label text-ellipsis mb-1"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" 
+                                title="${columns_names[property][sub_property]}"
+                                >${columns_names[property][sub_property]}</label>
+                                <input type="text" name="${sub_property}"
+                                class="form-control" id="${sub_property}"/>
+                            </div>`
+            }
+            html += `<div class="content">
+                      <!-- Discussion -->
+                      <div class="block block-rounded">
+                        <div class="block-header block-header-default">
+                          <h3 class="block-title">${property}</h3>
+                        </div>
+                        <div class="block-content">
+                        <div class="row">${html_items}</div>
+                        </div>
+                      </div>
+                    </div>`
         }
+        detailsRow.empty();
+        detailsRow.append(html);
+        activateBootstrapBehavior()
+
         detailsRow.empty();
         detailsRow.append(html);
         activateBootstrapBehavior()

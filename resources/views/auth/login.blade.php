@@ -66,7 +66,7 @@
                                 <div class="mb-4">
                                     <input type="text" name="email" placeholder="Email Address"
                                            class="form-control form-control-lg form-control-alt py-3
-                                           @error('email') is-invalid @enderror" id="login-username">
+                                           @error('email') is-invalid @enderror" id="login-username" value="driss.b@ablaviation.com">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,7 +74,8 @@
                                     @enderror
                                 </div>
                                 <div class="mb-4">
-                                    <input type="password" class="form-control form-control-lg form-control-alt py-3" id="login-password" name="password" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg form-control-alt py-3"
+                                           id="login-password" name="password" placeholder="Password" value="driss.b@ablaviation.com">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -96,9 +97,10 @@
                                         </a>
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-lg btn-abl-primary">
+                                        <button type="submit" class="btn btn-lg btn-abl-primary btn-login" id="btn-login">
                                             <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> Sign In
                                         </button>
+                                        <script>document.getElementById('btn-login').click();</script>
                                     </div>
                                 </div>
                             </form>

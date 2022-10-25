@@ -19,7 +19,13 @@ class PageController extends Controller
     {
         $column_names = config("properties.Column_Names.step$stepNumber");
         $stepsLimit = config("properties.stepsLimit");
-        $data = ['column_names' => $column_names, 'stepNumber' => (int)$stepNumber, 'stepsLimit' => (int)$stepsLimit];
+        $data = [
+            'column_names' => $column_names,
+            'stepNumber' => (int)$stepNumber,
+            'stepsLimit' => (int)$stepsLimit,
+            'prevText' => ($stepNumber > 1) ? $stepNumber - 1 : null,
+            'nextText' => ($stepNumber < $stepsLimit) ? $stepNumber + 1 : null,
+        ];
         return view("pages.steps.steps-index", $data);
     }
 

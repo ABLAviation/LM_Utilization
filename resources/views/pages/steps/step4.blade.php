@@ -1,10 +1,9 @@
 <div class="step step2">
-    <h3>Step 4</h3>
+    <h3>Lease Management - Utilization / Landing Gear</h3>
     <div class="row">
         <div class="col-lg-12 _offset-lg-2 space-y-5">
             <form id="form">
                 <div class="details form-section">
-                    <h3>Details</h3>
                     <div class="details-row row">
                     </div>
                 </div>

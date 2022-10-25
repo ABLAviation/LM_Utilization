@@ -1,5 +1,5 @@
 <div class="step step1">
-    <h3>Step 1</h3>
+    <h3>Lease Management - General</h3>
     <div class="row">
         <div class="col-lg-12 _offset-lg-2 space-y-5">
             <form id="form">
@@ -58,7 +58,6 @@
                     </div>
                 </div>
                 <div class="details form-section">
-                    <h3>Details</h3>
                     <div class="details-row row"><p class="mb-0">Choose an operator + msn to view the details</p></div>
                 </div>
             </form>
