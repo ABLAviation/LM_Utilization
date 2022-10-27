@@ -3,7 +3,7 @@
 return [
     'stepsLimit' => 4,
     'Column_Names' => [
-        'step1' => [
+        '1' => [
             'AirCraft' => [
                 'AIRCRAFTREGISTRATION_NUMBER' => 'Registration',
                 'AIRCRAFTVARIANT_CAPTION' => 'Aircraft',
@@ -33,7 +33,7 @@ return [
                 'MAIN_LDG_RH3_SN' => 'MAIN LDG RH3 SN',
             ],
         ],
-        'step2' => [
+        '2' => [
             'AirFrame' => [
                 'Data_Source_Airframe' => 'Data Source Airframe',
                 'Utilization_Start_date_Airframe' => 'Utilization Start Date Airframe',
@@ -59,7 +59,7 @@ return [
                 'APU_CSN_at_Latest_Utilization_date' => 'APU CSN at Latest Utilization Date',
             ],
         ],
-        'step3' => [
+        '3' => [
             'Engine 1' => [
                 'engine_1_notes' => 'Engine 1 Notes',
                 'data_source_engine_1' => 'Data Source Engine 1',
@@ -109,7 +109,7 @@ return [
                 'engine_4_csn_at_latest_utilization_date' => 'Engine 4 CSN at Latest Utilization Date',
             ],
         ],
-        'step4' => [
+        '4' => [
             'Nose LDG' => [
                 'NOSE_LDG_NOTES' => 'Nose LDG Notes',
                 'DATA_SOURCE_NOSE_LDG' => 'Data Source Nose LDG',

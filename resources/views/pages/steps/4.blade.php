@@ -1,36 +1,17 @@
-<div class="step step1">
-    <h3>Lease Management - General</h3>
+<div class="step step2">
+    <h3>Landing Gear <span class="fs-5">({{ "$step/$stepsLimit" }})</span></h3>
     <div class="row">
         <div class="col-lg-12 _offset-lg-2 space-y-5">
             <form id="form">
-                <div class="filter form-section">
-                    <h3>Filter</h3>
-                    <div class="row">
-                        <div class="col-md-6 col-12 operators mb-3">
-                            <label for="operator" class="mb-1">Operators</label>
-                            <select class="form-select operators_list"
-                                    id="operator" name="operator" width="100%">
-                                <option value="">Operator</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 col-12 msn mb-3">
-                            <label for="msn" class="mb-1">MSN</label>
-                            <select class="form-select msn_list" disabled
-                                    id="msn" name="msn" width="100%">
-                                <option value="">MSN</option>
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <button type="button" class="btn btn-alt-info btn-abl-primary search">Search</button>
-                            <button type="button" class="btn btn-alt-secondary btn-abl-secondary cancel">Cancel</button>
-                        </div>
+                <div class="details form-section">
+                    <div class="details-row step-4 row">
                     </div>
                 </div>
-                <div class="review-section form-section disabled">
+                <div class="review-section form-section p-2">
                     <h3>Review</h3>
                     <div class="row">
                         <div class="col-md-6 col-12 users mb-2">
-                            <label for="data-entry" class="mb-1">Data Entry</label>
+                            <label for="data-entry" class="mb-1 d-block">Data Entry</label>
                             <select class="form-select users_list data-entry"
                                     id="data-entry" name="data-entry" width="100%">
                                 <option value="">Data Entry</option>
@@ -56,10 +37,6 @@
                                    id="date-of-approval" name="date-of-approval" placeholder="Y-m-d" readonly="readonly">
                         </div>
                     </div>
-                </div>
-                <div class="details form-section">
-                    <h3>Details</h3>
-                    <div class="details-row row"><p class="mb-0">Choose an operator + msn to view the details</p></div>
                 </div>
             </form>
         </div>

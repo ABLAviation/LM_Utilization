@@ -71,10 +71,10 @@ function getMsn(operator_params) {
 
 function getUsers() {
     $('.users_list').each((i, item) => {
-
         $(item).select2({
-            'allowClear': true,
-            'placeholder': 'Select',
+            allowClear: true,
+            placeholder: 'Select a user',
+            width: "100%",
             ajax: {
                 url: '/api/users',
                 data: function (params) {
@@ -115,15 +115,15 @@ function activateBootstrapBehavior() {
     })
 }
 
-function loadData() {
-    let detailsRow = $('.details-row');
+function loadData(step = 1) {
+    let detailsRow = $('.details-row.step-' + step);
     let spinner = `<div class="spinner-container d-flex justify-content-center">
                         <div class="spinner-border text-info" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div></div>`;
     detailsRow.html(spinner);
     setTimeout(() => {
-        let columns_names = JSON.parse($('#columns_names').val());
+        let columns_names = JSON.parse($('#columns_names').val())[step];
         let html = '';
         for (const property in columns_names) {
             let html_items = '';
@@ -138,7 +138,7 @@ function loadData() {
                                 class="form-control" id="${sub_property}"/>
                             </div>`
             }
-            html += `<div class="content">
+            html += `<div class="content p-2">
                       <!-- Discussion -->
                       <div class="block block-rounded">
                         <div class="block-header block-header-default">

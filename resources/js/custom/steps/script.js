@@ -1,4 +1,4 @@
-import {initEventsList, getOperators, getUsers, initPlugins, displayAlert} from '../functions';
+import {initEventsList, getOperators, getUsers, initPlugins, displayAlert, loadData} from '../functions';
 
 $(() => {
 
@@ -18,7 +18,7 @@ $(() => {
     $('.search').on('click', function (e) {
 
         // Fetch data by OPERATOR & MSN
-        let detailsRow = $('.details-row');
+        let detailsRow = $('.details-row.step-1');
         let params = $('.msn_list').select2('data')[0];
         localStorage.setItem('msn', JSON.stringify(params));
         let spinner = `<div class="spinner-container d-flex justify-content-center">
@@ -37,7 +37,8 @@ $(() => {
                 }
                 let data = response.data[0]
                 let html = '';
-                let columns_names = JSON.parse($('#columns_names').val())
+                let columns_names = JSON.parse($('#columns_names').val())[1]
+                console.log(columns_names);
 
                 for (const property in columns_names) {
                     let html_items = '';
@@ -87,4 +88,27 @@ $(() => {
             }
         });
     });
+
+    loadData(3);
+    loadData(2)
+    loadData(4);
+
+    $('.update').on('click', function (e) {
+        e.preventDefault()
+        return displayAlert();
+        const formData = new FormData(this);
+        formData.append('step', 'step2')
+        $.ajax({
+            type: 'POST',
+            url: '/api/update',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+
+
 });

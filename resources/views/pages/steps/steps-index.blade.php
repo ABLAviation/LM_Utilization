@@ -18,7 +18,7 @@
 {{--    <script src="{{ asset('js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>--}}
 {{--    <script src="{{ asset('js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>--}}
 
-    @vite(['resources/js/custom/steps/step'.$stepNumber.'.js'])
+    @vite(['resources/js/custom/steps/script.js'])
 @endsection
 
 @section('content')
@@ -31,17 +31,32 @@
                         <div class="col-12">
                             <div class="block block-rounded">
                                 <div class="block-content block-content-full">
-                                    @include('pages.steps.step' . $stepNumber)
+                                    <div class="content">
+                                        <!-- Results -->
+                                        <div class="block block-rounded overflow-hidden">
+                                            <ul class="nav nav-tabs nav-tabs-block" role="tablist">
+                                                @for($step = 1; $step <= $stepsLimit; $step++)
+                                                    <li class="nav-item" role="presentation">
+                                                        <button type="button" class="nav-link {{ $step == 1 ? 'active' : '' }}" id="search-tab-{{ $step }}"
+                                                                data-bs-toggle="tab" data-bs-target="#search-{{ $step }}" role="tab"
+                                                                aria-controls="search-{{ $step }}" aria-selected="false" tabindex="-1">{{ $step }}</button>
+                                                    </li>
+                                                @endfor
+                                            </ul>
+                                            <div class="block-content tab-content overflow-hidden">
+                                                @for($step = 1; $step <= $stepsLimit; $step++)
+                                                <div class="tab-pane fade fade-up {{ $step == 1 ? 'show active' : '' }}" id="search-{{ $step }}" role="tabpanel" aria-labelledby="search-tab-{{ $step }}" tabindex="0">
+                                                    <div class="p-2 mb-4 bg-body-light">
+                                                        @include("pages.steps.$step", ['step' => $step])
+                                                    </div>
+                                                </div>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                        <!-- END Results -->
+                                    </div>
                                     <div class="btn-actions mt-0">
-                                        @if($prevText)
-                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $prevText }}"><i class="fa-solid fa-chevron-left"></i> Previous</a>
-                                        @endif
-                                        @if($stepNumber > 1)
                                         <button type="submit" class="btn btn-abl-primary update">Submit</button>
-                                        @endif
-                                        @if($nextText)
-                                        <a class="btn btn-abl-primary-alt" href="/steps/{{ $nextText }}">Next <i class="fa-solid fa-chevron-right"></i></a>
-                                        @endif
                                     </div>
                                     <div class="hidden-params d-none">
                                         <input type="hidden" id="columns_names" value="{{ json_encode($column_names) }}">

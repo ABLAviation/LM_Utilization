@@ -11,20 +11,17 @@ class PageController extends Controller
     {
 //        dd(\DB::connection()->getDatabaseName(), \DB::connection()->getPDO());
 
-        return $this->step($request, 1);
+        return $this->step($request);
         // return view('pages.steps.steps-index', $data);
     }
 
-    public function step(Request $request, $stepNumber)
+    public function step(Request $request)
     {
-        $column_names = config("properties.Column_Names.step$stepNumber");
+        $column_names = config("properties.Column_Names");
         $stepsLimit = config("properties.stepsLimit");
         $data = [
             'column_names' => $column_names,
-            'stepNumber' => (int)$stepNumber,
             'stepsLimit' => (int)$stepsLimit,
-            'prevText' => ($stepNumber > 1) ? $stepNumber - 1 : null,
-            'nextText' => ($stepNumber < $stepsLimit) ? $stepNumber + 1 : null,
         ];
         return view("pages.steps.steps-index", $data);
     }
