@@ -58,6 +58,7 @@
                     </div>
                 </div>
                 <div class="details form-section">
+                    <h3>Details</h3>
                     <div class="details-row row"><p class="mb-0">Choose an operator + msn to view the details</p></div>
                 </div>
             </form>
