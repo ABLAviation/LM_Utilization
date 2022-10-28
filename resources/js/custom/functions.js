@@ -115,7 +115,7 @@ function activateBootstrapBehavior() {
     })
 }
 
-function loadData(step = 1) {
+function loadData(columns_names, step) {
     let detailsRow = $('.details-row.step-' + step);
     let spinner = `<div class="spinner-container d-flex justify-content-center">
                         <div class="spinner-border text-info" role="status">
@@ -123,12 +123,11 @@ function loadData(step = 1) {
                         </div></div>`;
     detailsRow.html(spinner);
     setTimeout(() => {
-        let columns_names = JSON.parse($('#columns_names').val())[step];
         let html = '';
         for (const property in columns_names) {
             let html_items = '';
             for (const sub_property in columns_names[property]) {
-                html_items += `<div class="col-lg-4 col-md-6 col-12 mb-3">
+                html_items += `<div class="col-lg-4 col-md-6 col-12 mb-3" id="${sub_property}-wrapper">
                                 <label for="${sub_property}" 
                                 class="property-label text-ellipsis mb-1"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" 
@@ -138,13 +137,13 @@ function loadData(step = 1) {
                                 class="form-control" id="${sub_property}"/>
                             </div>`
             }
-            html += `<div class="content p-2">
+            html += `<div class="content p-2" id="${slugify(property)}">
                       <!-- Discussion -->
                       <div class="block block-rounded">
                         <div class="block-header block-header-default">
                           <h3 class="block-title">${property}</h3>
                         </div>
-                        <div class="block-content">
+                        <div class="block-content bg-body-light">
                         <div class="row">${html_items}</div>
                         </div>
                       </div>
@@ -168,6 +167,15 @@ function displayAlert() {
                                 <span id="alert-text">This functionality is not available in production yet !</span>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>`);
+}
+
+function slugify(str) {
+    return str
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_-]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 }
 
 export {initEventsList, getOperators, getUsers, initPlugins, loadData, displayAlert}

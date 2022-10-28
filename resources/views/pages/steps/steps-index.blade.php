@@ -31,7 +31,7 @@
                         <div class="col-12">
                             <div class="block block-rounded">
                                 <div class="block-content block-content-full">
-                                    <div class="content">
+                                    <div class="main-content">
                                         <!-- Results -->
                                         <div class="block block-rounded overflow-hidden">
                                             <ul class="nav nav-tabs nav-tabs-block" role="tablist">
@@ -39,24 +39,21 @@
                                                     <li class="nav-item" role="presentation">
                                                         <button type="button" class="nav-link {{ $step == 1 ? 'active' : '' }}" id="search-tab-{{ $step }}"
                                                                 data-bs-toggle="tab" data-bs-target="#search-{{ $step }}" role="tab"
-                                                                aria-controls="search-{{ $step }}" aria-selected="false" tabindex="-1">{{ $step }}</button>
+                                                                aria-controls="search-{{ $step }}" aria-selected="false" tabindex="-1">{{ $column_names[$step]['title'] }}</button>
                                                     </li>
                                                 @endfor
                                             </ul>
-                                            <div class="block-content tab-content overflow-hidden">
+                                            <div class="block-content tab-content overflow-hidden bg-body-light">
                                                 @for($step = 1; $step <= $stepsLimit; $step++)
                                                 <div class="tab-pane fade fade-up {{ $step == 1 ? 'show active' : '' }}" id="search-{{ $step }}" role="tabpanel" aria-labelledby="search-tab-{{ $step }}" tabindex="0">
-                                                    <div class="p-2 mb-4 bg-body-light">
-                                                        @include("pages.steps.$step", ['step' => $step])
+                                                    <div class="p-2 bg-body-light">
+                                                        @include("pages.steps.$step", ['step' => $step, 'title' => $column_names[$step]['title']])
                                                     </div>
                                                 </div>
                                                 @endfor
                                             </div>
                                         </div>
                                         <!-- END Results -->
-                                    </div>
-                                    <div class="btn-actions mt-0">
-                                        <button type="submit" class="btn btn-abl-primary update">Submit</button>
                                     </div>
                                     <div class="hidden-params d-none">
                                         <input type="hidden" id="columns_names" value="{{ json_encode($column_names) }}">
