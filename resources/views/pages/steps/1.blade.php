@@ -21,7 +21,7 @@
                             </select>
                         </div>
                         <div class="col-12">
-                            <button type="button" class="btn btn-alt-info btn-abl-primary search">Search</button>
+                            <button type="button" class="btn btn-alt-info btn-abl-primary search" disabled>Search</button>
                             <button type="button" class="btn btn-alt-secondary btn-abl-secondary cancel">Cancel</button>
                         </div>
                     </div>

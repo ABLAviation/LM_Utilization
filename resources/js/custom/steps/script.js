@@ -12,6 +12,7 @@ $(() => {
         $('.msn_list').val(null).trigger('change');
         $(".review-section").addClass("disabled");
         $('.msn_list').attr('disabled', true);
+        $('.btn.search').attr('disabled', true);
     });
     $('.search').on('click', function (e) {
 
@@ -19,13 +20,13 @@ $(() => {
         let params = $('.msn_list').select2('data')[0];
         localStorage.setItem('msn', JSON.stringify(params));
         $.ajax({
-            url: '/api/data/steps/1',
+            url: '/api/data',
             data: {msn_id: params.id},
             success: function (response) {
                 if (response.data.length == 0) {
                     return
                 }
-                let data = response.data[0]
+                let data = response.data;
                 let columns_names = JSON.parse($('#columns_names').val())[1]['items'];
 
                 for (const property in columns_names) {
@@ -38,24 +39,6 @@ $(() => {
                         }
                     }
                 }
-                // if(data.ESN3_ID == null || data.ESN3_ID == '') {
-                //     $('#engine-3').addClass('d-none');
-                // }
-                // if(data.ESN4_ID == null || data.ESN4_ID == '') {
-                //     $('#engine-4').addClass('d-none');
-                // }
-                // if(data.MAIN_LDG_LH2_SN == null || data.MAIN_LDG_LH2_SN == '') {
-                //     $('#ldg-lh2').addClass('d-none');
-                // }
-                // if(data.MAIN_LDG_LH3_SN == null || data.MAIN_LDG_LH3_SN == '') {
-                //     $('#ldg-lh3').addClass('d-none');
-                // }
-                // if(data.MAIN_LDG_RH2_SN == null || data.MAIN_LDG_RH2_SN == '') {
-                //     $('#ldg-rh2').addClass('d-none');
-                // }
-                // if(data.MAIN_LDG_RH3_SN == null || data.MAIN_LDG_RH3_SN == '') {
-                //     $('#ldg-rh3').addClass('d-none');
-                // }
             }
         });
     });

@@ -8,6 +8,9 @@ function initEventsList() {
         $('.msn_list').attr('disabled', false);
         getMsn(operator_params);
     });
+    $('.msn_list').on('change', function (e) {
+        $('.btn.search').attr('disabled', false);
+    });
 
     $(document).on('select2:open', () => {
         $('.select2-search__field').focus();
@@ -99,7 +102,6 @@ function getUsers() {
     });
 }
 
-
 function initPlugins() {
     One.helpersOnLoad('js-flatpickr');
 }
@@ -128,14 +130,13 @@ function loadData(columns_names, step) {
             let html_items = '';
             for (const sub_property in columns_names[property]) {
                 html_items += `<div class="col-lg-4 col-md-6 col-12 mb-3" id="${sub_property}_form-control">
-                                <label for="${sub_property}" 
-                                class="property-label text-ellipsis mb-1"
+                                <label for="${sub_property}" class="property-label text-ellipsis mb-1"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" 
                                 title="${columns_names[property][sub_property]}"
                                 >${columns_names[property][sub_property]}</label>
                                 <input type="text" name="${sub_property}"
                                 class="form-control" id="${sub_property}_input"/>
-                            </div>`
+                            </div>`;
             }
             let splittedProperty = property.split('/');
             html += `<div class="content p-2" id="${slugify(splittedProperty[1] ?? splittedProperty[0])}_wrapper">
@@ -148,15 +149,14 @@ function loadData(columns_names, step) {
                         <div class="row">${html_items}</div>
                         </div>
                       </div>
-                    </div>`
+                    </div>`;
         }
-        detailsRow.empty();
-        detailsRow.append(html);
-        activateBootstrapBehavior()
 
         detailsRow.empty();
         detailsRow.append(html);
-        activateBootstrapBehavior()
+        if (step == 4) {
+            activateBootstrapBehavior();
+        }
     }, 500);
 }
 

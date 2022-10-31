@@ -10,13 +10,6 @@ class PageController extends Controller
     public function index(Request $request)
     {
 //        dd(\DB::connection()->getDatabaseName(), \DB::connection()->getPDO());
-
-        return $this->step($request);
-        // return view('pages.steps.steps-index', $data);
-    }
-
-    public function step(Request $request)
-    {
         $column_names = config("properties.Column_Names");
         $stepsLimit = config("properties.stepsLimit");
         $data = [
@@ -24,6 +17,7 @@ class PageController extends Controller
             'stepsLimit' => (int)$stepsLimit,
         ];
         return view("pages.steps.steps-index", $data);
+        // return view('pages.steps.steps-index', $data);
     }
 
 }
