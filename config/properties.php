@@ -66,7 +66,7 @@ return [
             ]
         ],
         '3' => [
-            'title' => 'Engine',
+            'title' => 'Engines',
             'items' => [
                 'Engine 1/ESN1_ID' => [
                     'engine_1_notes' => 'Engine 1 Notes',
@@ -119,7 +119,7 @@ return [
             ]
         ],
         '4' => [
-            'title' => 'Landing Gear',
+            'title' => 'Landing Gears',
             'items' => [
                 'Nose LDG' => [
                     'NOSE_LDG_NOTES' => 'Nose LDG Notes',

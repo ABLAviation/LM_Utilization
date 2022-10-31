@@ -41,16 +41,9 @@ class ApiController extends Controller
         return ['msn' => $msn];
     }
 
-    public function getData(Request $request, $stepNumber)
-    {
-        $actionName = "step$stepNumber";
-        return $this->$actionName($request);
-    }
-
-    public function step1(Request $request)
+    public function getData(Request $request)
     {
         $msn_id = $request->get('msn_id');
-        $msn_id = 3; // Testing
         $data = \DB::table('ABL_DEALS as ad')
             ->join('MSN_LIST as ml', 'ml.ID_MSN', '=', 'ad.MSN_ID')
             ->join('OPERATORS_LIST as ol', 'ol.ID_OPERATOR', '=', 'ad.LESSEE_OPERATOR_ID')
@@ -58,9 +51,10 @@ class ApiController extends Controller
             ->join('APU as ap', 'ap.ID_APU', '=', 'ad.APU_ID')
             ->join('ENGINE_MODEL as em', 'em.ID_ENGINE_MODEL', '=', 'ad.ID_ENGINMODEL')
             ->join('ENGINE_SERIES as es', 'es.ID_ENGINE_SERIES', '=', 'em.ID_ENGINE_SERIES')
-//            ->join('LM_UTILIZATION_New as lm', 'lm.ID_ABLDEALS', '=', 'ad.ID_ABL_DEALS')
+            ->join('LM_UTILIZATION_DETAILS as lmd', 'lmd.ID_ABLDEALS', '=', 'ad.ID_ABL_DEALS')
             ->where('ml.ID_MSN', $msn_id)
             ->select([
+                'lmd.Utilization_End_Date_Airframe',
                 'ad.AIRCRAFTREGISTRATION_NUMBER',
                 'av.AIRCRAFTVARIANT_CAPTION',
                 'em.MODEL_CAPTION',
@@ -89,52 +83,8 @@ class ApiController extends Controller
                 \DB::raw('CONVERT(DATE, ad.ModificationDate) as ModificationDate')
             ])
             ->distinct()
-            ->get();
-        return ['data' => $data];
-    }
-    
-    public function step2(Request $request)
-    {
-        $operator_id = $request->input('operator_id');
-        $msn_id = $request->get('msn_id');
-        $data = \DB::table('LM_UTILIZATION_New as lm')
-                ->join('ABL_DEALS as ad', 'ad.ID_ABL_DEALS', '=', 'lm.ID_ABLDEALS')
-                ->join('MSN_LIST as ml', 'ml.ID_MSN', '=', 'ad.MSN_ID')
-                ->join('OPERATORS_LIST as ol', 'ol.ID_OPERATOR', '=', 'ad.LESSEE_OPERATOR_ID')
-            ->select([
-                'Data_Source_Airframe',
-                'ID_ABLDEALS',
-                'Data_Source_Airframe',
-                'Engine_1_Location',
-                'Engine_2_Location',
-                'Engine_3_Location',
-                'Engine_4_Location',
-                'Utilization_Start_date_Airframe',
-                'Utilization_End_date_Airframe',
-                'Last_Utilization_date_Airframe',
-                'Monthly_Airframe_Utilization_FH',
-                'Monthly_Airframe_Utilization_FC',
-                'Airframe_TSN_at_Latest_Utilization_date',
-                'Airframe_CSN_at_Latest_Utilization_date',
-                'APU_Location',
-                'Data_Source_APU',
-                'Utilization_Start_date_APU',
-                'Utilization_End_date_APU',
-                'Last_Utilization_date_APU',
-                'Monthly_APU_Utilization_APU_H',
-                'Monthly_APU_Utilization_APU_C',
-                'APU_TSN_at_Latest_Utilization_date',
-                'APU_CSN_at_Latest_Utilization_date',
-                'lm.CreatedBy',
-                'lm.CreationDate',
-                'lm.ModifiedBy',
-                'lm.ModificationDate',
-            ])
-            ->where('ml.ID_MSN', $msn_id)
-            ->where('LESSEE_OPERATOR_ID', $operator_id)
-            ->distinct()
+            ->orderBy('lmd.Utilization_End_Date_Airframe', 'desc')
             ->first();
-
         return ['data' => $data];
     }
 
@@ -153,18 +103,6 @@ class ApiController extends Controller
     }
 
     public function update(Request $request)
-    {
-        $stepNumber = $request->get('step');
-        $actionName = "update_step$stepNumber";
-        return $this->$actionName($request);
-    }
-
-    public function update_step1(Request $request)
-    {
-        return ["payload" => $request->all()];
-    }
-
-    public function update_step2(Request $request)
     {
         return ["payload" => $request->all()];
     }

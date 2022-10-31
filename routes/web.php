@@ -33,7 +33,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
     Route::get('/', [\App\Http\Controllers\PageController::class, 'index']);
-    Route::get('/steps/{step}', [\App\Http\Controllers\PageController::class, 'step']);
     //Route::match(['get', 'post'], '/dashboard', function(){
     //    return view('dashboard');
     //});
@@ -44,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('api')->group(function () {
         Route::get('operators', [\App\Http\Controllers\Api\ApiController::class, 'getOperators']);
         Route::get('msn', [\App\Http\Controllers\Api\ApiController::class, 'getMsn']);
-        Route::get('data/steps/{step}', [\App\Http\Controllers\Api\ApiController::class, 'getData']);
+        Route::get('data', [\App\Http\Controllers\Api\ApiController::class, 'getData']);
         Route::get('users', [\App\Http\Controllers\Api\ApiController::class, 'getUsers']);
 
         Route::post('update', [\App\Http\Controllers\Api\ApiController::class, 'update']);
