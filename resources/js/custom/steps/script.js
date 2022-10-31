@@ -31,14 +31,31 @@ $(() => {
                 for (const property in columns_names) {
                     for (const sub_property in columns_names[property]) {
                         if (data[sub_property]) {
-                            $(`#${sub_property}`).attr('readonly', true).val(`${data[sub_property] ?? ''}`);
+                            $(`#${sub_property}_input`).attr('readonly', true).val(`${data[sub_property] ?? ''}`);
                         } else {
-                            $(`#${sub_property}-wrapper`).addClass('d-none')
-                            // let ldgs = ['ldg_lh2','ldg_rh2','ldg_lh3','ldg_rh3'];
-                            // let engines = ['engine-1','engine-2','engine-3', 'engine-4'];
+                            $(`#${sub_property}_form-control`).addClass('d-none')
+                            $(`#${sub_property.toLowerCase()}_wrapper`).addClass('d-none')
                         }
                     }
                 }
+                // if(data.ESN3_ID == null || data.ESN3_ID == '') {
+                //     $('#engine-3').addClass('d-none');
+                // }
+                // if(data.ESN4_ID == null || data.ESN4_ID == '') {
+                //     $('#engine-4').addClass('d-none');
+                // }
+                // if(data.MAIN_LDG_LH2_SN == null || data.MAIN_LDG_LH2_SN == '') {
+                //     $('#ldg-lh2').addClass('d-none');
+                // }
+                // if(data.MAIN_LDG_LH3_SN == null || data.MAIN_LDG_LH3_SN == '') {
+                //     $('#ldg-lh3').addClass('d-none');
+                // }
+                // if(data.MAIN_LDG_RH2_SN == null || data.MAIN_LDG_RH2_SN == '') {
+                //     $('#ldg-rh2').addClass('d-none');
+                // }
+                // if(data.MAIN_LDG_RH3_SN == null || data.MAIN_LDG_RH3_SN == '') {
+                //     $('#ldg-rh3').addClass('d-none');
+                // }
             }
         });
     });
@@ -63,23 +80,5 @@ $(() => {
     for (let step in columns_names) {
         loadData(columns_names[step]['items'], step);
     }
-
-    $('.update').on('click', function (e) {
-        e.preventDefault()
-        return displayAlert();
-        const formData = new FormData(this);
-        formData.append('step', 'step2')
-        $.ajax({
-            type: 'POST',
-            url: '/api/update',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log(response);
-            }
-        });
-    });
-
 
 });

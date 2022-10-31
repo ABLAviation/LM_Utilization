@@ -68,7 +68,7 @@ return [
         '3' => [
             'title' => 'Engine',
             'items' => [
-                'Engine 1' => [
+                'Engine 1/ESN1_ID' => [
                     'engine_1_notes' => 'Engine 1 Notes',
                     'data_source_engine_1' => 'Data Source Engine 1',
                     'utilization_start_date_engine_1' => 'Utilization Start Date Engine 1',
@@ -80,7 +80,7 @@ return [
                     'engine_1_tsn_at_latest_utilization_date' => 'Engine 1 TSN at Latest Utilization Date',
                     'engine_1_csn_at_latest_utilization_date' => 'Engine 1 CSN at Latest Utilization Date',
                 ],
-                'Engine 2' => [
+                'Engine 2/ESN2_ID' => [
                     'engine_2_notes' => 'Engine 2 Notes',
                     'data_source_engine_2' => 'Data Source Engine 2',
                     'utilization_start_date_engine_2' => 'Utilization Start Date Engine 2',
@@ -92,7 +92,7 @@ return [
                     'engine_2_tsn_at_latest_utilization_date' => 'Engine 2 TSN at Latest Utilization Date',
                     'engine_2_csn_at_latest_utilization_date' => 'Engine 2 CSN at Latest Utilization Date',
                 ],
-                'Engine 3' => [
+                'Engine 3/ESN3_ID' => [
                     'engine_3_notes' => 'Engine 3 Notes',
                     'data_source_engine_3' => 'Data Source Engine 3',
                     'utilization_start_date_engine_3' => 'Utilization Start Date Engine 3',
@@ -104,7 +104,7 @@ return [
                     'engine_3_tsn_at_latest_utilization_date' => 'Engine 3 TSN at Latest Utilization Date',
                     'engine_3_csn_at_latest_utilization_date' => 'Engine 3 CSN at Latest Utilization Date',
                 ],
-                'Engine 4' => [
+                'Engine 4/ESN4_ID' => [
                     'engine_4_notes' => 'Engine 4 Notes',
                     'data_source_engine_4' => 'Data Source Engine 4',
                     'utilization_start_date_engine_4' => 'Utilization Start Date Engine 4',
@@ -133,7 +133,7 @@ return [
                     'NOSE_LDG_TSN_AT_LATEST_UTILIZATION_DATE' => 'Nose LDG TSN at Latest Utilization Date',
                     'NOSE_LDG_CSN_AT_LATEST_UTILIZATION_DATE' => 'Nose LDG CSN at Latest Utilization Date',
                 ],
-                'LDG LH1' => [
+                'LDG LH1/MAIN_LDG_LH1_SN' => [
 
                     'Main_LDG_LH1_Notes' => 'Main LDG LH 1 Notes',
                     'DATA_SOURCE_MAIN_LDG_LH1' => 'Data Source Main LDG LH 1',
@@ -146,7 +146,7 @@ return [
                     'MAIN_LDG_LH1_TSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG LH 1 TSN at Latest Utilization Date',
                     'MAIN_LDG_LH1_CSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG LH 1 CSN at Latest Utilization Date',
                 ],
-                'LDG RH1' => [
+                'LDG RH1/MAIN_LDG_RH1_SN' => [
 
                     'MAIN_LDG_RH1_NOTES' => 'Main LDG RH 1 Notes',
                     'DATA_SOURCE_MAIN_LDG_RH1' => 'Data Source Main LDG RH 1',
@@ -159,7 +159,7 @@ return [
                     'MAIN_LDG_RH1_TSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG RH 1 TSN at Latest Utilization Date',
                     'MAIN_LDG_RH1_CSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG RH 1 CSN at Latest Utilization Date',
                 ],
-                'LDG LH2' => [
+                'LDG LH2/MAIN_LDG_LH2_SN' => [
                     'MAIN_LDG_LH2_NOTES' => 'Main LDG LH 2 Notes',
                     'DATA_SOURCE_MAIN_LDG_LH2' => 'Data Source Main LDG LH 2',
                     'UTILIZATION_START_DATE_MAIN_LDG_LH2' => 'Utilization Start Date Main LDG LH 2',
@@ -171,7 +171,7 @@ return [
                     'MAIN_LDG_LH2_TSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG LH 2 TSN at Latest Utilization Date',
                     'MAIN_LDG_LH2_CSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG LH 2 CSN at Latest Utilization Date',
                 ],
-                'LDG RH2' => [
+                'LDG RH2/MAIN_LDG_RH2_SN' => [
                     'MAIN_LDG_RH2_NOTES' => 'Main LDG RH 2 Notes',
                     'DATA_SOURCE_MAIN_LDG_RH2' => 'Data Source Main LDG RH 2',
                     'UTILIZATION_START_DATE_MAIN_LDG_RH2' => 'Utilization Start Date Main LDG RH 2',
@@ -183,7 +183,7 @@ return [
                     'MAIN_LDG_RH2_TSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG RH 2 TSN at Latest Utilization Date',
                     'MAIN_LDG_RH2_CSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG RH 2 CSN at Latest Utilization Date',
                 ],
-                'LDG LH3' => [
+                'LDG LH3/MAIN_LDG_LH3_SN' => [
                     'MAIN_LDG_LH3_NOTES' => 'Main LDG LH 3 Notes',
                     'DATA_SOURCE_MAIN_LDG_LH3' => 'Data Source Main LDG LH 3',
                     'UTILIZATION_START_DATE_MAIN_LDG_LH3' => 'Utilization Start Date Main LDG LH 3',
@@ -195,7 +195,7 @@ return [
                     'MAIN_LDG_LH3_TSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG LH 3 TSN at Latest Utilization Date',
                     'MAIN_LDG_LH3_CSN_AT_LATEST_UTILIZATION_DATE' => 'Main LDG LH 3 CSN at Latest Utilization Date',
                 ],
-                'LDG RH3' => [
+                'LDG RH3/MAIN_LDG_RH3_SN' => [
                     'MAIN_LDG_RH3_NOTES' => 'Main LDG RH 3 Notes',
                     'DATA_SOURCE_MAIN_LDG_RH3' => 'Data Source Main LDG RH 3',
                     'UTILIZATION_START_DATE_MAIN_LDG_RH3' => 'Utilization Start Date Main LDG RH 3',
