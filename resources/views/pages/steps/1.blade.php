@@ -2,7 +2,7 @@
     <h3>{{ $title }} <span class="fs-5">({{ "$step/$stepsLimit" }})</span></h3>
     <div class="row">
         <div class="col-lg-12 _offset-lg-2 space-y-5">
-            <form id="form">
+            <div class="form-sections-wrapper">
                 <div class="filter form-section">
                     <h3>Filter</h3>
                     <div class="row">
@@ -30,7 +30,7 @@
                     <h3>Details</h3>
                     <div class="details-row step-1 row"><p class="mb-0">Choose an operator + msn to view the details</p></div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
