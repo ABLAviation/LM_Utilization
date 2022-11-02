@@ -24,6 +24,7 @@ $(() => {
             data: {msn_id: params.id},
             success: function (response) {
                 if (response.data == null) {
+                    displayAlert({class: 'alert-warning', text: 'No Data Found for this MSN !'})
                     return
                 }
                 let data = response.data;
