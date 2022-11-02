@@ -29,9 +29,7 @@ $(() => {
                 }
                 let data = response.data;
                 let categories = JSON.parse($('#columns_names').val());
-                console.log(categories);
                 for (let index in categories) {
-                    console.log(index);
                     let category = categories[index];
                     let columns_names = category.items;
                     for (const property in columns_names) {
