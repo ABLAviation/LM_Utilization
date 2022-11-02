@@ -23,19 +23,28 @@ $(() => {
             url: '/api/data',
             data: {msn_id: params.id},
             success: function (response) {
-                if (response.data.length == 0) {
+                if (response.data == null) {
                     return
                 }
                 let data = response.data;
-                let columns_names = JSON.parse($('#columns_names').val())[1]['items'];
-
-                for (const property in columns_names) {
-                    for (const sub_property in columns_names[property]) {
-                        if (data[sub_property]) {
-                            $(`#${sub_property}_input`).attr('readonly', true).val(`${data[sub_property] ?? ''}`);
-                        } else {
-                            $(`#${sub_property}_form-control`).addClass('d-none')
-                            $(`#${sub_property.toLowerCase()}_wrapper`).addClass('d-none')
+                let categories = JSON.parse($('#columns_names').val());
+                console.log(categories);
+                for (let index in categories) {
+                    console.log(index);
+                    let category = categories[index];
+                    let columns_names = category.items;
+                    for (const property in columns_names) {
+                        for (const sub_property in columns_names[property]) {
+                            try {
+                                if (data[sub_property]) {
+                                    $(`#${sub_property}_input`).attr('readonly', true).val(`${data[sub_property] ?? ''}`);
+                                } else {
+                                    // $(`#${sub_property}_form-control`).addClass('d-none')
+                                    // $(`#${sub_property.toLowerCase()}_wrapper`).addClass('d-none')
+                                }
+                            } catch (e) {
+                                console.log(sub_property);
+                            }
                         }
                     }
                 }

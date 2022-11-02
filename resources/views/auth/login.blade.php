@@ -66,7 +66,7 @@
                                 <div class="mb-4">
                                     <input type="text" name="email" placeholder="Email Address"
                                            class="form-control form-control-lg form-control-alt py-3
-                                           @error('email') is-invalid @enderror" id="login-username" value="driss.b@ablaviation.com">
+                                           @error('email') is-invalid @enderror" id="login-username" value="salah.l@ablaviation.com">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <input type="password" class="form-control form-control-lg form-control-alt py-3"
-                                           id="login-password" name="password" placeholder="Password" value="driss.b@ablaviation.com">
+                                           id="login-password" name="password" placeholder="Password" value="salah.l@ablaviation.com">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
