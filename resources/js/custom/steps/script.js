@@ -36,12 +36,31 @@ $(() => {
                         for (const sub_property in columns_names[property]) {
                             try {
                                 if (data[sub_property]) {
-                                    $(`#${sub_property}_input`).attr('readonly', true).val(`${data[sub_property] ?? ''}`);
+                                    let number = Number(data[sub_property])
+                                    let type = 'text';
+                                    let readonly = true;
+                                    if (!isNaN(number)) {
+                                        data[sub_property] = parseInt(number);
+                                    } else {
+                                        let date = new Date(data[sub_property]);
+                                        if (date != 'Invalid Date') {
+                                            data[sub_property] = date.toISOString().split('T')[0];
+                                            type = 'date';
+                                            // readonly = false;
+                                        }
+                                    }
+                                    let subPropertyInput = $(`#${sub_property}_input`);
+                                    subPropertyInput.attr('type', type).val(`${data[sub_property] ?? ''}`);
+                                    if (index == '1') {
+                                        subPropertyInput.attr('readonly', readonly)
+                                    }
                                 } else {
                                     // $(`#${sub_property}_form-control`).addClass('d-none')
+                                    // $(`#${sub_property}_input`).attr('readonly', true)
                                     // $(`#${sub_property.toLowerCase()}_wrapper`).addClass('d-none')
                                 }
                             } catch (e) {
+                                console.log(e);
                                 console.log(sub_property);
                             }
                         }
